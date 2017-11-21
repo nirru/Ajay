@@ -1,0 +1,26 @@
+<layout>
+
+    <data>
+
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="com.oxilo.oioindia.viewmodal.AllViewModal"/>
+
+
+    </data>
+
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/categorylist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.oxilo.oioindia.view.fragments.AllFragment">
+
+
+
+    </android.support.v7.widget.RecyclerView>
+
+</layout>
+

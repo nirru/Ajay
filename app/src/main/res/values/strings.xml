@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">OioIndia</string>
+    <string name="all">All</string>
+    <string name="top">Top</string>
+    <string name="favourite">Favourite</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_drawer">DrawerActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <array name="days">
+        <item name="Mon">Monday</item>
+        <item name="Tue">Tuesday</item>
+        <item name="Wed">Wednesday</item>
+    </array>
+</resources>

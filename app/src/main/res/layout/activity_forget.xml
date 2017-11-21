@@ -1,0 +1,156 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <data>
+
+        <import type="android.view.View"/>
+
+
+        <!--<variable-->
+        <!--name="isLoading"-->
+        <!--type="boolean" />-->
+        <variable
+            name="viewModel"
+            type="com.oxilo.oioindia.viewmodal.ForgetViewModal"/>
+
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </android.support.v7.widget.Toolbar>
+
+        <TextView
+            style="@style/Base.TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forget Password"
+            android:layout_marginTop="10dp"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/circular">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/logo"
+                        android:layout_gravity="center"
+                        />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="8dp"
+                    android:hint="Enter your Phone Number"
+                    android:inputType="number"
+                    android:visibility="@{viewModel.txt_enable ? View.VISIBLE : View.GONE}"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:background="@drawable/rounded_edittext"
+                    android:text="@={viewModel.mobile}" />
+
+                <EditText
+                    android:id="@+id/otp_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="8dp"
+                    android:hint="Enter your OTP"
+                    android:inputType="number"
+                    android:visibility="@{viewModel.txt_enable_2 ? View.VISIBLE : View.GONE}"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:background="@drawable/rounded_edittext"
+                    android:text="@={viewModel.otp}" />
+
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/forgot_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="get OTP"
+                    android:visibility="@{viewModel.enable ? View.VISIBLE : View.GONE}"
+                    android:onClick="@{() -> viewModel.forgetPwd()}"
+                    style="@style/Widget.AppCompat.Button.Colored"/>
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/disable_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="GET OTP"
+                    android:visibility="@{viewModel.enable ? View.GONE : View.VISIBLE}"
+                    android:textColor="@color/white"
+                    android:theme="@style/AppTheme.Button"/>
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/verify_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Verify OTP"
+                    app:visibleIf="@{viewModel.enable_otp_1}"
+                    android:onClick="@{() -> viewModel.otpVerfication()}"
+                    style="@style/Widget.AppCompat.Button.Colored"/>
+
+                <!--<android.support.v7.widget.AppCompatButton-->
+                    <!--android:id="@+id/verify_disable_btn"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="16dp"-->
+                    <!--android:text="Verify OTP"-->
+                    <!--app:visibleElse="@{viewModel.enable_otp_2}"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:theme="@style/AppTheme.Button"/>-->
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

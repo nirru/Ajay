@@ -1,0 +1,100 @@
+<layout>
+    <data>
+        <variable name="repo" type="com.oxilo.oioindia.modal.BusinessListing"/>
+        <variable name="callback"
+            type="com.oxilo.oioindia.view.BusinessClickCallback"/>
+    </data>
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:gravity="center|left">
+
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="5dp"
+                android:scaleType="fitXY"
+                android:visibility="visible"
+                app:imageUrl="@{repo.image}"/>
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/imageView2"
+                android:textStyle="bold"
+                android:gravity="center|left"
+                android:text="@{repo.name}"/>
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@+id/name"
+                android:layout_toRightOf="@+id/imageView2"
+                android:textStyle="bold"
+                android:gravity="center|left"
+                android:text="@{repo.address1}"/>
+
+            <ImageView
+                android:id="@+id/phone_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:srcCompat="@drawable/ic_phone_pink_700_18dp"
+                android:layout_below="@+id/address"
+                android:layout_toRightOf="@+id/imageView2"/>
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@+id/address"
+                android:layout_toRightOf="@+id/phone_img"
+                android:textStyle="bold"
+                android:gravity="center|left"
+                android:text="@{repo.phonenumber1}"/>
+
+            <android.support.v7.widget.AppCompatRatingBar
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:rating="4"
+                android:layout_below="@+id/phone"
+                android:layout_toRightOf="@+id/imageView2"
+                style="@style/Base.Widget.AppCompat.RatingBar.Small"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/rating"
+                android:layout_below="@+id/phone"
+                android:text="12 Review"/>
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</layout>

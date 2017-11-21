@@ -1,0 +1,208 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="login"
+            type="com.oxilo.oioindia.vo.Login" />
+        <!--<variable-->
+        <!--name="isLoading"-->
+        <!--type="boolean" />-->
+        <variable
+            name="viewModel"
+            type="com.oxilo.oioindia.viewmodal.RegitrationViewModal"/>
+
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </android.support.v7.widget.Toolbar>
+
+        <TextView
+            style="@style/Base.TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:layout_marginTop="10dp"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/circular">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/vector_drawable_hat"
+                        android:layout_gravity="center"
+                        />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="8dp"
+                    android:hint="Name"
+                    android:inputType="text"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:background="@drawable/rounded_edittext"
+                    android:text="@={viewModel.name}" />
+
+
+
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="8dp"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:background="@drawable/rounded_edittext"
+                    android:text="@={viewModel.email}" />
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="8dp"
+                    android:inputType="textPassword"
+                    android:hint="Password"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:background="@drawable/rounded_edittext"
+                    android:text="@={viewModel.password}" />
+
+
+                <EditText
+                    android:id="@+id/mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="8dp"
+                    android:hint="Phone"
+                    android:inputType="textPhonetic"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:background="@drawable/rounded_edittext"
+                    android:text="@={viewModel.mobile}" />
+
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/register_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Register"
+                    android:visibility="@{viewModel.enable ? View.VISIBLE : View.GONE}"
+                    android:onClick="@{() -> viewModel.onRegister()}"
+                    style="@style/Widget.AppCompat.Button.Colored"/>
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/disable_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Register"
+                    android:visibility="@{viewModel.enable ? View.GONE : View.VISIBLE}"
+                    android:textColor="@color/white"
+                    android:theme="@style/AppTheme.Button"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Have an account?"
+                        style="@style/Base.TextAppearance.AppCompat.Small"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:textColor="@color/colorPrimary"
+                        android:text=" Login  "
+                        android:onClick="@{() -> viewModel.launchActivity()}"
+                        style="@style/Base.TextAppearance.AppCompat.Subhead"/>
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+
+
+
+        <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="92dp"-->
+        <!--android:onClick="@{(theView) -> viewModel.onLogin(theView, viewModel,login.email)}"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
