@@ -27,7 +27,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements CallAno
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_change_password);
         if (getIntent() != null){
             this.user_id = getIntent().getStringExtra("A");
         }
