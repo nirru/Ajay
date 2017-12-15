@@ -66,16 +66,16 @@ public class MainViewModal extends AndroidViewModel {
     }
 
     public Observable<CategoryResponse> getAllCategory(String pos){
-        return MainRequestManager.getInstance(application.getApplicationContext()).getCategory("1","1");
+        return MainRequestManager.getInstance(application.getApplicationContext()).getCategory("ic_name","ic_name");
     }
 
     public Observable<CategoryResponse> getTopCategory(String pos){
-        return MainRequestManager.getInstance(application.getApplicationContext()).getCategory("1","2");
+        return MainRequestManager.getInstance(application.getApplicationContext()).getCategory("ic_name","2");
     }
 
     public Observable<DirectoryData> getCombineData(){
         return Observable.zip(
-                getAllCategory("1"),
+                getAllCategory("ic_name"),
                 getTopCategory("2"),
                 (t1, t2) -> processUserDataResult(t1,t2));
     }

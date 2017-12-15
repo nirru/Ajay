@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OioIndia</string>
+    <string name="app_name">OIO India</string>
     <string name="all">All</string>
     <string name="top">Top</string>
     <string name="favourite">Favourite</string>
@@ -15,7 +15,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_notifications">Add Business</string>
 
     <array name="days">
         <item name="Mon">Monday</item>

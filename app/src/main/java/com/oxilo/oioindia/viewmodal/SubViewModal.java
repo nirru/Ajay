@@ -31,7 +31,7 @@ public class SubViewModal extends AndroidViewModel {
 
 
     public Observable<SubCategoryResponse> getSubCategory(String serviceid){
-        return MainRequestManager.getInstance(application.getApplicationContext()).getSubCategory("735");
+        return MainRequestManager.getInstance(application.getApplicationContext()).getSubCategory(serviceid);
     }
 
     /**

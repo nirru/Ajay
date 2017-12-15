@@ -73,7 +73,7 @@ public class ForgetActivity extends BaseActivity implements CallAnotherActivityN
     @Override
     public void callActivity(int k) {
 
-        if (k==1){
+        if (k==ic_name){
             binding.forgotBtn.setVisibility(View.GONE);
             forgetViewModal.enable_otp_1.set(true);
             forgetViewModal.txt_enable_2.set(true);
@@ -93,7 +93,7 @@ public class ForgetActivity extends BaseActivity implements CallAnotherActivityN
                                 try{
                                     String sd = new String(responseBodyResponse.body().bytes());
                                     JSONObject mapping = new JSONObject(sd);
-                                    if (mapping.getString("result").equals("1")){
+                                    if (mapping.getString("result").equals("ic_name")){
                                         Intent i = new Intent(ForgetActivity.this,ChangePasswordActivity.class);
 
                                         i.putExtra("A",forgetViewModal.user_id.get());

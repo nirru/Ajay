@@ -22,6 +22,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.oxilo.oioindia.R;
 import com.oxilo.oioindia.view.activity.MainActivity;
+import com.oxilo.oioindia.view.fragments.BusinessDetailFragment;
 import com.oxilo.oioindia.view.fragments.BusinessListFragment;
 import com.oxilo.oioindia.view.fragments.MainFragment;
 import com.oxilo.oioindia.view.fragments.SubCategorieFragment;
@@ -64,6 +65,17 @@ public class NavigationController {
         BusinessListFragment fragment = BusinessListFragment.newInstance(cat_id, name);
         String tag = "repo" + "/"  + "/" + "blist";
         String hide = "repo" + "/"  + "/" + "subcategory";
+        fragmentManager.beginTransaction()
+                .hide(fragmentManager.findFragmentByTag(hide))
+                .add(containerId, fragment, tag)
+                .addToBackStack(null)
+                .commitAllowingStateLoss();
+    }
+
+    public void navigateToBusinessDetails(String product_id) {
+        BusinessDetailFragment fragment = BusinessDetailFragment.newInstance(product_id, "");
+        String tag = "repo" + "/"  + "/" + "detail";
+        String hide = "repo" + "/"  + "/" + "blist";
         fragmentManager.beginTransaction()
                 .hide(fragmentManager.findFragmentByTag(hide))
                 .add(containerId, fragment, tag)

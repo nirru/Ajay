@@ -2,6 +2,7 @@ package com.oxilo.oioindia.repositary.main;
 
 import com.oxilo.oioindia.modal.Business;
 import com.oxilo.oioindia.modal.CityResponse;
+import com.oxilo.oioindia.modal.Details;
 import com.oxilo.oioindia.vo.CategoryResponse;
 import com.oxilo.oioindia.vo.Slider;
 import com.oxilo.oioindia.vo.SubCategoryResponse;
@@ -39,6 +40,11 @@ public interface IMainAPI {
     Observable<Business> business(
             @Field("cat_id") String cat_id,
             @Field("city_id") String city_id);
+
+    @FormUrlEncoded
+    @POST("api/get-business-details.php")
+    Observable<Response<ResponseBody>> businessdetails(
+            @Field("product_id") String product_id);
 
 
     @POST("api/get-cities.php")

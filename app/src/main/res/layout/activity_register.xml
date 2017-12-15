@@ -1,6 +1,4 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" >
+<layout >
     <data>
 
         <import type="android.view.View"/>
@@ -18,124 +16,123 @@
     </data>
 
 
-    <android.support.constraint.ConstraintLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <android.support.v7.widget.Toolbar
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </android.support.v7.widget.Toolbar>
-
-        <TextView
-            style="@style/Base.TextAppearance.AppCompat.Headline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Register"
-            android:layout_marginTop="10dp"
-            app:layout_constraintHorizontal_bias="0.5"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/oio"/>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="10dp"
-                android:padding="10dp"
+                android:padding="16dp"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/circular">
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:scaleType="centerInside"
+                    android:layout_marginTop="50dp"
+                    app:srcCompat="@drawable/vector_drawable_hat"
+                    android:layout_gravity="center"/>
 
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/vector_drawable_hat"
-                        android:layout_gravity="center"
-                        />
-
-                </LinearLayout>
-
-                <EditText
-                    android:id="@+id/name"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:padding="8dp"
-                    android:hint="Name"
-                    android:inputType="text"
-                    style="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:background="@drawable/rounded_edittext"
-                    android:text="@={viewModel.name}" />
+                    android:textColorHint="@android:color/white"
+                    app:errorEnabled="true">
 
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:padding="8dp"
+                        android:hint="Name"
+                        android:inputType="text"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/ic_name"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/white"
+                        style="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:text="@={viewModel.name}" />
 
+                </android.support.design.widget.TextInputLayout>
 
-
-                <EditText
-                    android:id="@+id/email"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:padding="8dp"
-                    android:hint="Email"
-                    android:inputType="textEmailAddress"
-                    style="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:background="@drawable/rounded_edittext"
-                    android:text="@={viewModel.email}" />
+                    android:textColorHint="@android:color/white"
+                    app:errorEnabled="true">
 
-                <EditText
-                    android:id="@+id/password"
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:padding="8dp"
+                        android:hint="Email"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/ic_email"
+                        android:inputType="textEmailAddress"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/white"
+                        style="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:text="@={viewModel.email}" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:padding="8dp"
-                    android:inputType="textPassword"
-                    android:hint="Password"
-                    style="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:background="@drawable/rounded_edittext"
-                    android:text="@={viewModel.password}" />
+                    android:textColorHint="@android:color/white"
+                    app:errorEnabled="true">
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:padding="8dp"
+                        android:hint="Password"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/ic_pwd"
+                        android:inputType="textEmailAddress|textPassword"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@android:color/white"
+                        style="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:text="@={viewModel.password}" />
+                </android.support.design.widget.TextInputLayout>
 
 
-                <EditText
-                    android:id="@+id/mobile"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:padding="8dp"
-                    android:hint="Phone"
-                    android:inputType="textPhonetic"
-                    style="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:background="@drawable/rounded_edittext"
-                    android:text="@={viewModel.mobile}" />
-
+                    android:textColorHint="@android:color/white"
+                    app:errorEnabled="true">
+                    <EditText
+                        android:id="@+id/mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:padding="8dp"
+                        android:hint="Phone"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/ic_phone"
+                        android:inputType="textPhonetic"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@android:color/white"
+                        style="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:text="@={viewModel.mobile}" />
+                </android.support.design.widget.TextInputLayout>
 
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/register_btn"
@@ -143,9 +140,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Register"
+                    android:textColor="@color/white"
                     android:visibility="@{viewModel.enable ? View.VISIBLE : View.GONE}"
                     android:onClick="@{() -> viewModel.onRegister()}"
-                    style="@style/Widget.AppCompat.Button.Colored"/>
+                    android:backgroundTint="@android:color/holo_green_light"/>
 
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/disable_btn"
@@ -167,22 +165,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Have an account?"
+                        android:textColor="@color/white"
                         style="@style/Base.TextAppearance.AppCompat.Small"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:text=" Login  "
                         android:onClick="@{() -> viewModel.launchActivity()}"
                         style="@style/Base.TextAppearance.AppCompat.Subhead"/>
 
 
                 </LinearLayout>
-
-
-
             </LinearLayout>
 
         </ScrollView>
@@ -191,18 +187,5 @@
 
 
 
-        <!--<Button-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="92dp"-->
-        <!--android:onClick="@{(theView) -> viewModel.onLogin(theView, viewModel,login.email)}"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
-
-
-
-    </android.support.constraint.ConstraintLayout>
+    </RelativeLayout>
 </layout>

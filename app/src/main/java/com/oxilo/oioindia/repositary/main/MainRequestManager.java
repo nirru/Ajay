@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.oxilo.oioindia.modal.Business;
 import com.oxilo.oioindia.modal.CityResponse;
+import com.oxilo.oioindia.modal.Details;
 import com.oxilo.oioindia.repositary.main.exception.ImageInternalException;
 import com.oxilo.oioindia.retrofit.RetrofitFactory;
 import com.oxilo.oioindia.vo.CategoryResponse;
@@ -11,6 +12,8 @@ import com.oxilo.oioindia.vo.Slider;
 import com.oxilo.oioindia.vo.SubCategoryResponse;
 
 import io.reactivex.Observable;
+import okhttp3.ResponseBody;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 /**
@@ -61,6 +64,10 @@ public class MainRequestManager {
 
     public Observable<Business> getBusiness(String cat_id,String city_id) {
         return mainAPIService.business(cat_id,city_id);
+    }
+
+    public Observable<Response<ResponseBody>> getBusinessDetails(String product_id) {
+        return mainAPIService.businessDetails(product_id);
     }
 
     public Observable<CityResponse> getCity() {

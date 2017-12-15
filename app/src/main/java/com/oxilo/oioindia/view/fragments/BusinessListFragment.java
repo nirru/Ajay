@@ -18,8 +18,10 @@ import com.oxilo.oioindia.databinding.FragmentSubCategorieBinding;
 import com.oxilo.oioindia.modal.Business;
 import com.oxilo.oioindia.modal.BusinessListing;
 import com.oxilo.oioindia.utils.AutoClearedValue;
+import com.oxilo.oioindia.view.activity.MainActivity;
 import com.oxilo.oioindia.view.adapter.BusinessListAdapter;
 import com.oxilo.oioindia.view.adapter.SubCategoryListAdapter;
+import com.oxilo.oioindia.view.common.NavigationController;
 import com.oxilo.oioindia.viewmodal.BusinesListViewModal;
 import com.oxilo.oioindia.viewmodal.SubViewModal;
 import com.oxilo.oioindia.vo.SubCategory;
@@ -60,7 +62,7 @@ public class BusinessListFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
+     * @param param1 Parameter ic_name.
      * @param param2 Parameter 2.
      * @return A new instance of fragment BusinessListFragment.
      */
@@ -108,8 +110,12 @@ public class BusinessListFragment extends Fragment {
         BusinesListViewModal.Factory factory = new BusinesListViewModal.Factory(getActivity().getApplication());
         viewModal = ViewModelProviders.of(this,factory).get(BusinesListViewModal.class);
         binding.get().setVm(viewModal);
-        businessListAdapter = new BusinessListAdapter(dataBindingComponent, repo -> {
-
+        businessListAdapter = new BusinessListAdapter(dataBindingComponent, new BusinessListAdapter.RepoClickCallback() {
+            @Override
+            public void onClick(BusinessListing repo) {
+                NavigationController navigationController = new NavigationController((MainActivity) getActivity());
+                navigationController.navigateToBusinessDetails(repo.getProductID());
+            }
         });
         binding.get().categorylist.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         binding.get().categorylist.setAdapter(businessListAdapter);

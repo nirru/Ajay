@@ -4,6 +4,7 @@ package com.oxilo.oioindia.repositary.main;
 import com.oxilo.oioindia.data.PrivateSharedPreferencesManager;
 import com.oxilo.oioindia.modal.Business;
 import com.oxilo.oioindia.modal.CityResponse;
+import com.oxilo.oioindia.modal.Details;
 import com.oxilo.oioindia.repositary.main.exception.ImageAlreadyExistsException;
 import com.oxilo.oioindia.repositary.main.exception.ImageTechFailureException;
 import com.oxilo.oioindia.repositary.register.IRegisterAPI;
@@ -115,6 +116,26 @@ public class MainAPIService {
 
     }
 
+    public Observable<Response<ResponseBody>> businessDetails (String product_id) {
+        return mainAPI.businessdetails(product_id)
+                .doOnSubscribe(disposable -> isRequestingLogin = true)
+                .doOnTerminate(() -> isRequestingLogin = false)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .onErrorResumeNext(this::handleBusinessDetailsError)
+                .doOnNext(new Consumer<Response<ResponseBody>>() {
+                    @Override
+                    public void accept(Response<ResponseBody> business) throws Exception {
+                        System.out.println(business);
+                        Object s = business;
+
+                    }
+                });
+
+    }
+
+
+
     public Observable<CityResponse> city () {
         return mainAPI.city()
                 .doOnSubscribe(disposable -> isRequestingLogin = true)
@@ -202,6 +223,23 @@ public class MainAPIService {
     }
 
     private Observable<CityResponse> handleCityError(Throwable throwable) {
+
+        if (throwable instanceof HttpRetryException) {
+
+            int status = ((HttpRetryException) throwable).responseCode();
+
+            if (status == 401) {
+                throw new ImageAlreadyExistsException();
+            } else {
+                throw new ImageAlreadyExistsException();
+            }
+
+        } else {
+            throw new ImageTechFailureException();
+        }
+    }
+
+    private Observable<Response<ResponseBody>> handleBusinessDetailsError(Throwable throwable) {
 
         if (throwable instanceof HttpRetryException) {
 

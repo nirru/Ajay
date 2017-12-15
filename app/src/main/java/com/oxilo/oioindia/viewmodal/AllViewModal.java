@@ -30,7 +30,7 @@ public class AllViewModal extends AndroidViewModel {
 
 
     public Observable<CategoryResponse> getCategory(String pos){
-        return MainRequestManager.getInstance(application.getApplicationContext()).getCategory("1",pos);
+        return MainRequestManager.getInstance(application.getApplicationContext()).getCategory("ic_name",pos);
     }
 
 

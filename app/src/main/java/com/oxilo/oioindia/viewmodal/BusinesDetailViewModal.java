@@ -8,29 +8,27 @@ import android.databinding.ObservableBoolean;
 import android.support.annotation.NonNull;
 
 import com.oxilo.oioindia.modal.Business;
+import com.oxilo.oioindia.modal.Details;
 import com.oxilo.oioindia.repositary.main.MainRequestManager;
-import com.oxilo.oioindia.vo.SubCategoryResponse;
 
 import io.reactivex.Observable;
+import okhttp3.ResponseBody;
+import retrofit2.Response;
 
 /**
  * Created by nikk on 23/10/17.
  */
 
-public class BusinesListViewModal extends AndroidViewModel {
+public class BusinesDetailViewModal extends AndroidViewModel {
     Application application;
     public ObservableBoolean enable = new ObservableBoolean();
-    public BusinesListViewModal(Application application) {
+    public BusinesDetailViewModal(Application application) {
         super(application);
         this.application = application;
         enable.set(true);
     }
-
-
-
-
-    public Observable<Business> getBusinessListing(String cat_id, String city_id){
-        return MainRequestManager.getInstance(application.getApplicationContext()).getBusiness(cat_id,city_id);
+    public Observable<Response<ResponseBody>> getBusinessDetail(String product_id){
+        return MainRequestManager.getInstance(application.getApplicationContext()).getBusinessDetails(product_id);
     }
 
     /**
@@ -51,7 +49,7 @@ public class BusinesListViewModal extends AndroidViewModel {
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
             //noinspection unchecked
-            return (T) new BusinesListViewModal(mApplication);
+            return (T) new BusinesDetailViewModal(mApplication);
         }
     }
 }
