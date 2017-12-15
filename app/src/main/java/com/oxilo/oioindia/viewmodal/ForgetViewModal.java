@@ -65,7 +65,7 @@ public class ForgetViewModal extends AndroidViewModel {
                             txt_enable.set(false);
 
                             if (mapping.getString("result").equals("ic_name")){
-                                navigator.callActivity(ic_name);
+                                navigator.callActivity(1);
                                 user_id.set(mapping.getString("userID"));
                             }else{
                                 navigator.callActivity(4);

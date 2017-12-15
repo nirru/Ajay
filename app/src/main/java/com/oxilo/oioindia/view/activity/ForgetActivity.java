@@ -73,7 +73,7 @@ public class ForgetActivity extends BaseActivity implements CallAnotherActivityN
     @Override
     public void callActivity(int k) {
 
-        if (k==ic_name){
+        if (k==1){
             binding.forgotBtn.setVisibility(View.GONE);
             forgetViewModal.enable_otp_1.set(true);
             forgetViewModal.txt_enable_2.set(true);

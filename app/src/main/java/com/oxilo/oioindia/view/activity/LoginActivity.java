@@ -45,7 +45,7 @@ public class LoginActivity extends BaseActivity implements CallAnotherActivityNa
 
         Observable.combineLatest(RxUtils.toObservable(loginViewModal.email), RxUtils.toObservable(loginViewModal.password), (email, password) -> StringUtils.isNotNullOrEmpty(email) && StringUtils.isNotNullOrEmpty(password))
                 .subscribe(result -> {
-                    binding.loginBtn.setEnabled(result);
+//                    binding.loginBtn.setEnabled(result);
                     loginViewModal.enable.set(result);
                     if (!result) {
                     }

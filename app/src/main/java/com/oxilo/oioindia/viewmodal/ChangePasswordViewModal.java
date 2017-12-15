@@ -45,9 +45,9 @@ public class ChangePasswordViewModal extends AndroidViewModel {
                         {
                             String sd = new String(responseBodyResponse.body().bytes());
                             JSONObject mapping = new JSONObject(sd);
-                            navigator.callActivity(ic_name);
+                            navigator.callActivity(1);
                             if (mapping.getString("result").equals("ic_name")){
-                                navigator.callActivity(ic_name);
+                                navigator.callActivity(2);
                             }else{
                                 navigator.callActivity(2);
                             }
