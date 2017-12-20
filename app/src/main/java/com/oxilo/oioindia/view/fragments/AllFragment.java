@@ -159,11 +159,8 @@ public class AllFragment extends Fragment {
         categoryListAdapter = new CategoryListAdapter(dataBindingComponent, false, new CategoryListAdapter.RepoClickCallback() {
             @Override
             public void onClick(Category repo) {
-
-                    NavigationController navigationController = new NavigationController((MainActivity) getActivity());
-                    navigationController.navigateToSubCategory(repo.getServiceID(),repo);
-
-
+                NavigationController navigationController = new NavigationController((MainActivity) getActivity());
+                navigationController.navigateToSubCategory(repo.getServiceID(),repo);
             }
         });
         binding.get().categorylist.setLayoutManager(new GridLayoutManager(getContext(),3));

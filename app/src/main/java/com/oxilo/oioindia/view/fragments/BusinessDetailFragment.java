@@ -4,7 +4,10 @@ package com.oxilo.oioindia.view.fragments;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,7 +48,7 @@ public class BusinessDetailFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    RecyclerView reviews_rating_list;
     FragmentBusinessDetailBinding binding;
 
 
@@ -88,7 +91,6 @@ public class BusinessDetailFragment extends Fragment {
         BusinesDetailViewModal.Factory factory = new BusinesDetailViewModal.Factory(getActivity().getApplication());
         BusinesDetailViewModal viewModal = ViewModelProviders.of(this,factory).get(BusinesDetailViewModal.class);
         binding.setVm(viewModal);
-
         binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -139,4 +141,13 @@ public class BusinessDetailFragment extends Fragment {
         return  binding.getRoot();
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        reviews_rating_list = (RecyclerView)view.findViewById(R.id.reviews_rating_list);
+        setHasOptionsMenu(true);
+        reviews_rating_list.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+
+    }
 }

@@ -66,7 +66,7 @@ public class MainViewModal extends AndroidViewModel {
     }
 
     public Observable<CategoryResponse> getAllCategory(String pos){
-        return MainRequestManager.getInstance(application.getApplicationContext()).getCategory("ic_name","ic_name");
+        return MainRequestManager.getInstance(application.getApplicationContext()).getCategory("ic_name","1");
     }
 
     public Observable<CategoryResponse> getTopCategory(String pos){
@@ -75,7 +75,7 @@ public class MainViewModal extends AndroidViewModel {
 
     public Observable<DirectoryData> getCombineData(){
         return Observable.zip(
-                getAllCategory("ic_name"),
+                getAllCategory("1"),
                 getTopCategory("2"),
                 (t1, t2) -> processUserDataResult(t1,t2));
     }

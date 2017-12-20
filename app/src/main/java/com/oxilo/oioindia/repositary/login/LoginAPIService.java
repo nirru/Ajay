@@ -54,19 +54,13 @@ public class LoginAPIService {
                         processWeatherResponse(responseBodyResponse);
                     }
                 }).singleElement();
-
-
-
     }
 
     private Observable<Response<ResponseBody>> handleLoginError(Throwable throwable) {
-
         throw new LoginTechFailureException();
     }
 
     private void processWeatherResponse(Response<ResponseBody> loginResponse) {
-
-
         Object l = loginResponse;
         authenticationManager.logUserIn();
     }
