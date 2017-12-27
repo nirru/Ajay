@@ -37,12 +37,21 @@
                 android:padding="16dp"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sign Up"
+                    android:textColor="@color/white"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:gravity="right"
+                    android:layout_gravity="right"/>
+
                 <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:scaleType="centerInside"
-                    android:layout_marginTop="50dp"
-                    app:srcCompat="@drawable/vector_drawable_hat"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/ic_app_logo"
                     android:layout_gravity="center"/>
 
                 <android.support.design.widget.TextInputLayout

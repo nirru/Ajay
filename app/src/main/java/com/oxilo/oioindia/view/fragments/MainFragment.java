@@ -118,8 +118,8 @@ public class MainFragment extends Fragment {
                 fragments.add(FaviouriteFragment.newInstance("", ""));
 
                 List<String> strings = new ArrayList<>();
-                strings.add("All");
-                strings.add("Top");
+                strings.add("All       ");
+                strings.add("Top       ");
                 strings.add("Faviourite");
 
                 binding.setPagerAdapter(new MainSectionsAdapter(getActivity(), getChildFragmentManager(), fragments, strings));

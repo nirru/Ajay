@@ -23,4 +23,6 @@
         <item name="Tue">Tuesday</item>
         <item name="Wed">Wednesday</item>
     </array>
+
+    <string name="facebook_app_id">2011324292481069</string>
 </resources>

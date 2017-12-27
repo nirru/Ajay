@@ -80,9 +80,8 @@
                         android:layout_height="48dp"
                         android:layout_gravity="bottom"
                         android:background="@color/colorPrimary"
-                        app:tabMode="scrollable"
-                        app:tabGravity="fill"
-                        app:tabContentStart="10dp"
+                        app:tabGravity="center"
+                        app:tabMode="fixed"
                         android:pager="@{pager}"/>
 
 
