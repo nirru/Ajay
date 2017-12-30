@@ -155,31 +155,55 @@
                         android:layout_marginTop="16dp"
                         android:textColor="@color/white"
                         android:text="Login with facebook"
-                        android:onClick="@{() -> viewModel.onLogin()}"
+                        android:onClick="@{() -> viewModel.doFb()}"
                         android:backgroundTint="#3b5998"/>
 
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_marginTop="10dp"
                         android:layout_gravity="center">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Not registered?"
-                            android:textColor="@color/white"
-                            style="@style/Base.TextAppearance.AppCompat.Small"/>
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Not registered?"
+                                android:textColor="@color/white"
+                                style="@style/Base.TextAppearance.AppCompat.Small"/>
 
-                        <TextView
+                            <TextView
+                                android:layout_width="40dp"
+                                android:layout_height="2dp"
+                                android:visibility="invisible"/>
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="5dp"
-                            android:textColor="@color/white"
-                            android:text="Create an account"
-                            android:onClick="@{() -> viewModel.launchRegisterActivity()}"
-                            style="@style/Base.TextAppearance.AppCompat.Subhead"/>
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:textColor="@color/white"
+                                android:text="Create an account"
+                                android:onClick="@{() -> viewModel.launchRegisterActivity()}"
+                                style="@style/Base.TextAppearance.AppCompat.Subhead"/>
+
+                            <TextView
+                                android:layout_width="120dp"
+                                android:layout_height="2dp"
+                                android:background="#3b5998"/>
+                        </LinearLayout>
 
 
                     </LinearLayout>
@@ -200,6 +224,7 @@
                         android:textColor="@color/white"
                         android:layout_gravity="center"
                         android:layout_marginTop="25dp"
+                        android:onClick="@{() -> viewModel.skip()}"
                         style="@style/Base.TextAppearance.AppCompat.Headline"
                         android:text="Continue As Guest"/>
 

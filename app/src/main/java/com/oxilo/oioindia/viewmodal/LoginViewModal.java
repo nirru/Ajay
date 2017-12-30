@@ -1,5 +1,6 @@
 package com.oxilo.oioindia.viewmodal;
 
+import android.app.Activity;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.ViewModel;
@@ -14,19 +15,27 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.oxilo.oioindia.AppController;
 import com.oxilo.oioindia.R;
 import com.oxilo.oioindia.repositary.login.LoginRequestManager;
 import com.oxilo.oioindia.utils.FormUtils;
 import com.oxilo.oioindia.utils.RxUtils;
 import com.oxilo.oioindia.view.CallAnotherActivityNavigator;
+import com.oxilo.oioindia.view.activity.LoginActivity;
 import com.oxilo.oioindia.view.activity.RegisterActivity;
 import com.oxilo.oioindia.vo.Login;
 
 import org.json.JSONObject;
 
+import java.util.Arrays;
 import java.util.List;
 
 import io.reactivex.functions.Consumer;
@@ -41,8 +50,6 @@ import rx.functions.Func1;
  */
 
 public class LoginViewModal extends AndroidViewModel {
-
-
     Application application;
     public ObservableField<String> email = new ObservableField<>();
     public ObservableField<String> password = new ObservableField<>();
@@ -64,9 +71,10 @@ public class LoginViewModal extends AndroidViewModel {
                 {
                     String sd = new String(responseBodyResponse.body().bytes());
                     JSONObject mapping = new JSONObject(sd);
-
                     if (mapping.getString("message").equals("Success Login")){
                         navigator.callActivity(1);
+                        AppController.getInstance().getAppPrefs().putObject("LOGIN","1");
+                        AppController.getInstance().getAppPrefs().commit();
                     }else{
                         navigator.callActivity(2);
                     }
@@ -83,6 +91,15 @@ public class LoginViewModal extends AndroidViewModel {
             }
         });
     }
+
+    public void doFb(){
+        navigator.callActivity(5);
+    }
+
+    public void skip(){
+        navigator.callActivity(6);
+    }
+
 
     public void launchRegisterActivity(){
         navigator.callActivity();

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.oxilo.oioindia.AppController;
 import com.oxilo.oioindia.R;
 import com.oxilo.oioindia.binding.BindingCity;
 import com.oxilo.oioindia.binding.IDataChangeListener;
@@ -41,27 +42,38 @@ public class SplashActivity extends AppCompatActivity {
          binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
           binding.setSplash(new Splash(this));
 
+        String login = AppController.getInstance().getAppPrefs().getObject("LOGIN", String.class);
+        if (login != null) {
+            Intent i = new Intent(SplashActivity.this,MainActivity.class);
+            startActivity(i);
+            finish();
+        } else {
+            Intent i = new Intent(SplashActivity.this,LoginActivity.class);
+            startActivity(i);
+            finish();
+        }
 
-        MainRequestManager.getInstance(getApplicationContext()).getCity().subscribe(new Consumer<CityResponse>() {
-            @Override
-            public void accept(CityResponse cityResponse) throws Exception {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent i = new Intent(SplashActivity.this,LoginActivity.class);
-                        i.putParcelableArrayListExtra("A",cityResponse.getResult());
-                        startActivity(i);
-                    }
-                }, 1000);
 
-            }
-        }, new Consumer<Throwable>() {
-            @Override
-            public void accept(Throwable throwable) throws Exception {
-
-                throwable.printStackTrace();
-            }
-        });
+//        MainRequestManager.getInstance(getApplicationContext()).getCity().subscribe(new Consumer<CityResponse>() {
+//            @Override
+//            public void accept(CityResponse cityResponse) throws Exception {
+//                new Handler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Intent i = new Intent(SplashActivity.this,LoginActivity.class);
+//                        i.putParcelableArrayListExtra("A",cityResponse.getResult());
+//                        startActivity(i);
+//                    }
+//                }, 1000);
+//
+//            }
+//        }, new Consumer<Throwable>() {
+//            @Override
+//            public void accept(Throwable throwable) throws Exception {
+//
+//                throwable.printStackTrace();
+//            }
+//        });
 
 
 //        binding.setSpinAdapterCity(new SpinnerAdapter(SplashActivity.this, R.layout.spinner_row, city_));

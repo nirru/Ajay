@@ -9,6 +9,7 @@ import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.oxilo.oioindia.AppController;
 import com.oxilo.oioindia.repositary.register.RegisterRequestManager;
 import com.oxilo.oioindia.view.CallAnotherActivityNavigator;
 
@@ -51,6 +52,8 @@ public class RegitrationViewModal extends AndroidViewModel {
             public void onComplete() {
               //launch main landing screen
                 navigator.callActivity(1);
+                AppController.getInstance().getAppPrefs().putObject("LOGIN","1");
+                AppController.getInstance().getAppPrefs().commit();
             }
 
             @Override

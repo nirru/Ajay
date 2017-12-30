@@ -9,8 +9,18 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.oxilo.oioindia.AppController;
 import com.oxilo.oioindia.R;
 import com.oxilo.oioindia.databinding.ActivityLoginBinding;
 import com.oxilo.oioindia.utils.FormUtils;
@@ -19,6 +29,11 @@ import com.oxilo.oioindia.utils.StringUtils;
 import com.oxilo.oioindia.view.CallAnotherActivityNavigator;
 import com.oxilo.oioindia.view.common.BaseActivity;
 import com.oxilo.oioindia.viewmodal.LoginViewModal;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Arrays;
 
 import io.reactivex.Observable;
 
@@ -29,13 +44,17 @@ import io.reactivex.Observable;
 public class LoginActivity extends BaseActivity implements CallAnotherActivityNavigator{
 
     ActivityLoginBinding binding;
+    LoginViewModal loginViewModal;
+
+    public CallbackManager callbackManager;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         LoginViewModal.Factory factory = new LoginViewModal.Factory(getApplication(),this);
-        LoginViewModal loginViewModal = ViewModelProviders.of(this,factory).get(LoginViewModal.class);
+        loginViewModal = ViewModelProviders.of(this,factory).get(LoginViewModal.class);
         binding.setViewModel(loginViewModal);
 
         RxUtils.toObservable(loginViewModal.email).map(s -> FormUtils.checkEmail(s) ? null : "Invalid Email")
@@ -79,5 +98,80 @@ public class LoginActivity extends BaseActivity implements CallAnotherActivityNa
             Intent i = new Intent(LoginActivity.this,ForgetActivity.class);
             startActivity(i);
         }
+        else if (k==5){
+            fb();
+        }
+        else if (k==6){
+            Intent i = new Intent(LoginActivity.this,MainActivity.class);
+            startActivity(i);
+            finish();
+        }
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (callbackManager !=null)
+            callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void fb(){
+//        loginButton.setReadPermissions("email");
+        // Callback registration
+        callbackManager = CallbackManager.Factory.create();
+        // Set permissions
+        LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email","user_photos","public_profile"));
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.e("JDED==","" + loginResult.getAccessToken().toString());
+                getUserDetailsFromFB(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+                Toast.makeText(getApplicationContext(),"fb user canceled",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+                Toast.makeText(getApplicationContext(),"fb error",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getUserDetailsFromFB(AccessToken accessToken) {
+
+        GraphRequest req=GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
+            @Override
+            public void onCompleted(JSONObject object, GraphResponse response) {
+                Toast.makeText(getApplicationContext(),"graph request completed",Toast.LENGTH_SHORT).show();
+                try{
+                    AppController.getInstance().getAppPrefs().putObject("LOGIN","1");
+                    AppController.getInstance().getAppPrefs().commit();
+                    String email =  object.getString("email");
+                    String name = object.getString("name");
+                    String id = object.getString("id");
+                    String photourl =object.getJSONObject("picture").getJSONObject("data").getString("url");
+
+                    Intent i = new Intent(LoginActivity.this,MainActivity.class);
+                    startActivity(i);
+                    finish();
+                }catch (JSONException e)
+                {
+                    Toast.makeText(getApplicationContext(),"graph request error : "+e.getMessage(),Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,email,gender,birthday,picture.type(large)");
+        req.setParameters(parameters);
+        req.executeAsync();
     }
 }
