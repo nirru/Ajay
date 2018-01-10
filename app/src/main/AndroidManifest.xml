@@ -3,6 +3,7 @@
     package="com.oxilo.oioindia">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:name=".AppController"
@@ -24,7 +25,7 @@
         <activity
             android:name=".view.activity.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.Register.NoActionBar" />
         <activity
             android:name=".view.activity.RegisterActivity"
             android:screenOrientation="portrait"

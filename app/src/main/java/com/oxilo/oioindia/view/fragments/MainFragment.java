@@ -56,8 +56,8 @@ public class MainFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String city;
+    private String address;
 
     private OnFragmentInteractionListener mListener;
 
@@ -92,8 +92,8 @@ public class MainFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            city = getArguments().getString(ARG_PARAM1);
+            address = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -107,6 +107,7 @@ public class MainFragment extends Fragment {
         binding.setVm(viewModal);
 
 
+//        binding.cityName.setText(city);
         viewModal.getCombineData().subscribe(new Consumer<DirectoryData>() {
             @Override
             public void accept(DirectoryData directoryData) throws Exception {

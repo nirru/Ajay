@@ -42,9 +42,9 @@ public class NavigationController {
         this.fragmentManager = mainActivity.getSupportFragmentManager();
     }
 
-    public void navigateToMain() {
+    public void navigateToMain(String city,String adress) {
         String tag = "repo" + "/"  + "/" + "main";
-        MainFragment searchFragment = new MainFragment();
+        MainFragment searchFragment =  MainFragment.newInstance(city,adress);
         fragmentManager.beginTransaction()
                 .replace(containerId, searchFragment,tag)
                 .commitAllowingStateLoss();

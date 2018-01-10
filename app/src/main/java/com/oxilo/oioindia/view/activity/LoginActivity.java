@@ -1,14 +1,10 @@
 package com.oxilo.oioindia.view.activity;
 
-import android.app.Activity;
-import android.arch.lifecycle.LifecycleActivity;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 

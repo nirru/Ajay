@@ -15,9 +15,6 @@ import com.oxilo.oioindia.view.fragments.MainFragment;
 
 public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener,AllFragment.OnFragmentInteractionListener,FaviouriteFragment.OnFragmentInteractionListener{
 
-
-
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -39,16 +36,14 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         if (savedInstanceState == null) {
+            String city = getIntent().getStringExtra("CITY");
+            String address = getIntent().getStringExtra("ADDRESS");
             NavigationController navigationController = new NavigationController(this);
-            navigationController.navigateToMain();
+            navigationController.navigateToMain(city,address);
         }
-
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
 
     }
 

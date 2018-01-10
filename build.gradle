@@ -30,6 +30,7 @@ ext{
     rxandroidVersion = "2.0.1"
     picassoVersion = "2.5.2"
     timber_version = "4.5.1"
+    location = "11.8.0"
     architectureComponentsVersion = "1.0.0-alpha9"
 
 }

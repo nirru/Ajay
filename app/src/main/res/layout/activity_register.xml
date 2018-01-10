@@ -29,166 +29,194 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sign Up"
-                    android:textColor="@color/white"
-                    style="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:gravity="right"
-                    android:layout_gravity="right"/>
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:scaleType="centerInside"
-                    android:layout_marginTop="30dp"
-                    android:src="@drawable/ic_app_logo"
-                    android:layout_gravity="center"/>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@android:color/white"
-                    app:errorEnabled="true">
-
-                    <EditText
-                        android:id="@+id/name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:padding="8dp"
-                        android:hint="Name"
-                        android:inputType="text"
-                        android:drawablePadding="10dp"
-                        android:drawableLeft="@drawable/ic_name"
-                        android:backgroundTint="@color/white"
-                        android:textColor="@color/white"
-                        style="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:text="@={viewModel.name}" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@android:color/white"
-                    app:errorEnabled="true">
-
-                    <EditText
-                        android:id="@+id/email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:padding="8dp"
-                        android:hint="Email"
-                        android:drawablePadding="10dp"
-                        android:drawableLeft="@drawable/ic_email"
-                        android:inputType="textEmailAddress"
-                        android:backgroundTint="@color/white"
-                        android:textColor="@color/white"
-                        style="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:text="@={viewModel.email}" />
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@android:color/white"
-                    app:errorEnabled="true">
-
-                    <EditText
-                        android:id="@+id/password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:padding="8dp"
-                        android:hint="Password"
-                        android:drawablePadding="10dp"
-                        android:drawableLeft="@drawable/ic_pwd"
-                        android:inputType="textEmailAddress|textPassword"
-                        android:backgroundTint="@color/white"
-                        android:textColor="@android:color/white"
-                        style="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:text="@={viewModel.password}" />
-                </android.support.design.widget.TextInputLayout>
-
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@android:color/white"
-                    app:errorEnabled="true">
-                    <EditText
-                        android:id="@+id/mobile"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:padding="8dp"
-                        android:hint="Phone"
-                        android:drawablePadding="10dp"
-                        android:drawableLeft="@drawable/ic_phone"
-                        android:inputType="textPhonetic"
-                        android:backgroundTint="@color/white"
-                        android:textColor="@android:color/white"
-                        style="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:text="@={viewModel.mobile}" />
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/register_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Register"
-                    android:textColor="@color/white"
-                    android:visibility="@{viewModel.enable ? View.VISIBLE : View.GONE}"
-                    android:onClick="@{() -> viewModel.onRegister()}"
-                    android:backgroundTint="@android:color/holo_green_light"/>
-
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/disable_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Register"
-                    android:visibility="@{viewModel.enable ? View.GONE : View.VISIBLE}"
-                    android:textColor="@color/white"
-                    android:theme="@style/AppTheme.Button"/>
-
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_gravity="center">
+                    android:layout_gravity="right">
 
                     <TextView
+                        android:id="@+id/login_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Have an account?"
+                        android:layout_toLeftOf="@+id/rlt"
+                        android:text="SignUp"
+                        android:layout_marginRight="5dp"
                         android:textColor="@color/white"
-                        style="@style/Base.TextAppearance.AppCompat.Small"/>
+                        style="@style/Base.TextAppearance.AppCompat.Medium"
+                        />
 
                     <TextView
+                        android:id="@+id/rlt"
+                        android:layout_width="4dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/login_tv"
+                        android:layout_alignTop="@+id/login_tv"
+                        android:background="@color/white"
+                        android:layout_alignParentRight="true"/>
+
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerInside"
+                        android:layout_marginTop="30dp"
+                        android:src="@drawable/ic_app_logo"
+                        android:layout_gravity="center"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@android:color/white"
+                        app:errorEnabled="true">
+
+                        <EditText
+                            android:id="@+id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:padding="8dp"
+                            android:hint="Name"
+                            android:inputType="text"
+                            android:drawablePadding="10dp"
+                            android:drawableLeft="@drawable/ic_name"
+                            android:backgroundTint="@color/white"
+                            android:textColor="@color/white"
+                            style="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:text="@={viewModel.name}" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@android:color/white"
+                        app:errorEnabled="true">
+
+                        <EditText
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:padding="8dp"
+                            android:hint="Email"
+                            android:drawablePadding="10dp"
+                            android:drawableLeft="@drawable/ic_email"
+                            android:inputType="textEmailAddress"
+                            android:backgroundTint="@color/white"
+                            android:textColor="@color/white"
+                            style="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:text="@={viewModel.email}" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@android:color/white"
+                        app:errorEnabled="true">
+
+                        <EditText
+                            android:id="@+id/password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:padding="8dp"
+                            android:hint="Password"
+                            android:drawablePadding="10dp"
+                            android:drawableLeft="@drawable/ic_pwd"
+                            android:inputType="textEmailAddress|textPassword"
+                            android:backgroundTint="@color/white"
+                            android:textColor="@android:color/white"
+                            style="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:text="@={viewModel.password}" />
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@android:color/white"
+                        app:errorEnabled="true">
+                        <EditText
+                            android:id="@+id/mobile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:padding="8dp"
+                            android:hint="Phone"
+                            android:drawablePadding="10dp"
+                            android:drawableLeft="@drawable/ic_phone"
+                            android:inputType="textPhonetic"
+                            android:backgroundTint="@color/white"
+                            android:textColor="@android:color/white"
+                            style="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:text="@={viewModel.mobile}" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/register_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Register"
+                        android:textColor="@color/white"
+                        android:visibility="@{viewModel.enable ? View.VISIBLE : View.GONE}"
+                        android:onClick="@{() -> viewModel.onRegister()}"
+                        android:backgroundTint="@android:color/holo_green_light"/>
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/disable_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Register"
+                        android:visibility="@{viewModel.enable ? View.GONE : View.VISIBLE}"
+                        android:textColor="@color/white"
+                        android:theme="@style/AppTheme.Button"/>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:textColor="@color/white"
-                        android:text=" Login  "
-                        android:onClick="@{() -> viewModel.launchActivity()}"
-                        style="@style/Base.TextAppearance.AppCompat.Subhead"/>
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Have an account?"
+                            android:textColor="@color/white"
+                            style="@style/Base.TextAppearance.AppCompat.Small"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:textColor="@color/white"
+                            android:text=" Login  "
+                            android:onClick="@{() -> viewModel.launchActivity()}"
+                            style="@style/Base.TextAppearance.AppCompat.Subhead"/>
 
 
+                    </LinearLayout>
                 </LinearLayout>
+
             </LinearLayout>
+
+
 
         </ScrollView>
 
