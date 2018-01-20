@@ -37,16 +37,23 @@ import io.reactivex.Observable;
  * Created by nikk on 14/10/17.
  */
 
-public class LoginActivity extends BaseActivity implements CallAnotherActivityNavigator{
+public class LoginActivity extends BaseActivity implements CallAnotherActivityNavigator {
 
     ActivityLoginBinding binding;
     LoginViewModal loginViewModal;
 
     public CallbackManager callbackManager;
+    private String city;
+    private String address;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getIntent()!=null){
+             city = getIntent().getStringExtra("CITY");
+             address = getIntent().getStringExtra("ADDRESS");
+        }
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         LoginViewModal.Factory factory = new LoginViewModal.Factory(getApplication(),this);
@@ -79,13 +86,15 @@ public class LoginActivity extends BaseActivity implements CallAnotherActivityNa
 
         if (k==1){
             getPd().dismiss();
-            Toast.makeText(LoginActivity.this,"Login Sucessfull",Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this,"Login Sucessfull", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(LoginActivity.this,MainActivity.class);
+            i.putExtra("CITY", "" + city);
+            i.putExtra("ADDRESS", "" + address);
             startActivity(i);
             finish();
         }else if (k==2){
             getPd().dismiss();
-            Toast.makeText(LoginActivity.this,"Login Failure",Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this,"Login Failure", Toast.LENGTH_SHORT).show();
         }
         else if (k==3){
            getPd().show();
@@ -129,13 +138,13 @@ public class LoginActivity extends BaseActivity implements CallAnotherActivityNa
             @Override
             public void onCancel() {
                 // App code
-                Toast.makeText(getApplicationContext(),"fb user canceled",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"fb user canceled", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(FacebookException exception) {
                 // App code
-                Toast.makeText(getApplicationContext(),"fb error",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"fb error", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -145,7 +154,7 @@ public class LoginActivity extends BaseActivity implements CallAnotherActivityNa
         GraphRequest req=GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
             @Override
             public void onCompleted(JSONObject object, GraphResponse response) {
-                Toast.makeText(getApplicationContext(),"graph request completed",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"graph request completed", Toast.LENGTH_SHORT).show();
                 try{
                     AppController.getInstance().getAppPrefs().putObject("LOGIN","1");
                     AppController.getInstance().getAppPrefs().commit();
@@ -159,7 +168,7 @@ public class LoginActivity extends BaseActivity implements CallAnotherActivityNa
                     finish();
                 }catch (JSONException e)
                 {
-                    Toast.makeText(getApplicationContext(),"graph request error : "+e.getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"graph request error : "+e.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
 
