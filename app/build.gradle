@@ -86,12 +86,13 @@ dependencies {
     compile "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
     compile "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$retrofit_adapter_version"
     compile 'com.android.support:multidex:1.0.1'
+    compile "com.google.android.gms:play-services-places:$location"
     //location
-//    compile "com.google.android.gms:play-services-location:$location"
+    compile "com.google.android.gms:play-services-location:$location"
 //    compile ('codes.titanium:locgetter:1.0.3',{
 //        transitive = false
 //    })
-    compile 'com.github.florent37:rxgps:1.0.0'
+//    compile 'com.github.florent37:rxgps:1.0.0'
     //jackson
     implementation(
             [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: "$jackson_version"],

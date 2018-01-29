@@ -23,7 +23,7 @@ import com.oxilo.oioindia.utils.FormUtils;
 import com.oxilo.oioindia.utils.RxUtils;
 import com.oxilo.oioindia.utils.StringUtils;
 import com.oxilo.oioindia.view.CallAnotherActivityNavigator;
-import com.oxilo.oioindia.view.common.BaseActivity;
+import com.oxilo.oioindia.view.common.*;
 import com.oxilo.oioindia.viewmodal.LoginViewModal;
 
 import org.json.JSONException;
@@ -37,7 +37,7 @@ import io.reactivex.Observable;
  * Created by nikk on 14/10/17.
  */
 
-public class LoginActivity extends BaseActivity implements CallAnotherActivityNavigator {
+public class LoginActivity extends com.oxilo.oioindia.view.common.BaseActivity implements CallAnotherActivityNavigator {
 
     ActivityLoginBinding binding;
     LoginViewModal loginViewModal;

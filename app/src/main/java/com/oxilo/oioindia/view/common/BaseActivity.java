@@ -75,4 +75,3 @@ public class BaseActivity extends LifecycleActivity {
     }
 
 }
-

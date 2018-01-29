@@ -17,7 +17,6 @@
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
-        android:visibility="gone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"

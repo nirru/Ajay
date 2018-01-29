@@ -24,6 +24,7 @@ import com.oxilo.oioindia.R;
 import com.oxilo.oioindia.view.activity.MainActivity;
 import com.oxilo.oioindia.view.fragments.BusinessDetailFragment;
 import com.oxilo.oioindia.view.fragments.BusinessListFragment;
+import com.oxilo.oioindia.view.fragments.LocationFragment;
 import com.oxilo.oioindia.view.fragments.MainFragment;
 import com.oxilo.oioindia.view.fragments.SubCategorieFragment;
 import com.oxilo.oioindia.vo.Category;
@@ -47,6 +48,17 @@ public class NavigationController {
         MainFragment searchFragment =  MainFragment.newInstance(city,adress);
         fragmentManager.beginTransaction()
                 .replace(containerId, searchFragment,tag)
+                .commitAllowingStateLoss();
+    }
+
+    public void navigateToLocation(String address, String city) {
+        LocationFragment fragment = LocationFragment.newInstance(address, city);
+        String tag = "repo" + "/"  + "/" + "location";
+        String hide = "repo" + "/"  + "/" + "main";
+        fragmentManager.beginTransaction()
+                .hide(fragmentManager.findFragmentByTag(hide))
+                .add(containerId, fragment, tag)
+                .addToBackStack(null)
                 .commitAllowingStateLoss();
     }
 

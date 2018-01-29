@@ -3,7 +3,6 @@ package com.oxilo.oioindia.view.activity;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.oxilo.oioindia.R;
@@ -12,15 +11,12 @@ import com.oxilo.oioindia.utils.FormUtils;
 import com.oxilo.oioindia.utils.RxUtils;
 import com.oxilo.oioindia.utils.StringUtils;
 import com.oxilo.oioindia.view.CallAnotherActivityNavigator;
-import com.oxilo.oioindia.view.common.BaseActivity;
-import com.oxilo.oioindia.viewmodal.LoginViewModal;
+import com.oxilo.oioindia.view.common.*;
 import com.oxilo.oioindia.viewmodal.RegitrationViewModal;
 
-import io.reactivex.CompletableObserver;
 import io.reactivex.Observable;
-import io.reactivex.disposables.Disposable;
 
-public class RegisterActivity extends BaseActivity implements CallAnotherActivityNavigator {
+public class RegisterActivity extends com.oxilo.oioindia.view.common.BaseActivity implements CallAnotherActivityNavigator {
 
     ActivityRegisterBinding binding;
 

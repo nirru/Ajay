@@ -3,7 +3,6 @@ package com.oxilo.oioindia.view.activity;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -13,15 +12,12 @@ import com.oxilo.oioindia.databinding.ActivityForgetBinding;
 import com.oxilo.oioindia.repositary.forgotpassword.ForgetRequestManager;
 import com.oxilo.oioindia.utils.FormUtils;
 import com.oxilo.oioindia.utils.RxUtils;
-import com.oxilo.oioindia.utils.StringUtils;
 import com.oxilo.oioindia.view.CallAnotherActivityNavigator;
-import com.oxilo.oioindia.view.common.BaseActivity;
+import com.oxilo.oioindia.view.common.BaseLocationActivity;
 import com.oxilo.oioindia.viewmodal.ForgetViewModal;
-import com.oxilo.oioindia.viewmodal.LoginViewModal;
 
 import org.json.JSONObject;
 
-import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 import okhttp3.ResponseBody;
 import retrofit2.Response;

@@ -31,6 +31,7 @@ import com.oxilo.oioindia.view.MainSectionsAdapter;
 import com.oxilo.oioindia.view.activity.MainActivity;
 import com.oxilo.oioindia.view.adapter.ImagePagerAdapter;
 import com.oxilo.oioindia.view.adapter.SpinnerAdapter;
+import com.oxilo.oioindia.view.common.NavigationController;
 import com.oxilo.oioindia.viewmodal.LoginViewModal;
 import com.oxilo.oioindia.viewmodal.MainViewModal;
 import com.oxilo.oioindia.vo.Slider;
@@ -137,6 +138,13 @@ public class MainFragment extends Fragment {
 
         viewModal.getSlider().subscribe(slider -> binding.setImageAdapter(new ImagePagerAdapter(getActivity(),slider.getResult())), Throwable::printStackTrace);
 
+        binding.cityName.setText(city);
+        binding.cityName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new NavigationController((MainActivity) getActivity()).navigateToLocation(address,city);
+            }
+        });
         return binding.getRoot();
     }
 
